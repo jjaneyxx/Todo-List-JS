@@ -13,28 +13,27 @@ body {
 
 .tabs {
   display: flex;
-  justify-content: space-around;
   background-color: whitesmoke;
   margin: 1em 0;
   position: relative;
+}
+
+#under-line {
+  background-color: pink;
+  position: absolute;
+  width: 70px;
+  left: 0px;
+  top: 50px;
+  padding: 5px;
 }
 
 .tabs div {
   padding: 1em;
 }
 
-/* 원을 제외한 글자에만 적용되는 스타일*/
-.tabs div:not(.circle) {
-  z-index: 2; /* 글자를 앞쪽에 배치하기 위해 높은 z-index 값*/
-}
-
-/* 원에만 적용되는 스타일 */
-.circle {
-  background-color: rgb(245, 161, 177);
-  border-radius: 50%;
-  width: 3em; /*padding 처럼 em*/
-  height: 3em;
-  position: absolute;
-  top: 0.3em;
-  z-index: 1; /*원을 글자보다 뒤로 보내기 위한 낮은 z-index 값*/
+.task {
+  background-color: whitesmoke;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5em;
 }
