@@ -14,6 +14,7 @@ function addTask() {
   taskList.push(taskInput.value);
   console.log(taskList);
   render();
+  taskInput.value = "";
 }
 
 function render() {
