@@ -3,6 +3,12 @@ let addButton = document.getElementById("add-button");
 let taskList = []; // 입력된 할일을 담는 배열
 
 addButton.addEventListener("click", addTask);
+taskInput.addEventListener("focus", () => {
+  taskInput.value = "";
+});
+taskInput.addEventListener("keyup", (event) => {
+  if (event.key === "Enter") addTask();
+});
 
 function addTask() {
   taskList.push(taskInput.value);
