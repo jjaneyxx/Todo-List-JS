@@ -7,6 +7,7 @@ body {
 }
 
 .container {
+  padding-top: 1em;
   background-color: rgb(245, 161, 177);
   min-height: 100vh;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
@@ -16,6 +17,30 @@ h1 {
   font-family: "Bungee Tint", sans-serif;
   font-weight: 400;
   font-style: normal;
+}
+
+.input-area {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1em;
+}
+
+.input-area input {
+  flex-grow: 1;
+  margin-right: 1em;
+  padding: 0.5em;
+}
+
+.input-area button {
+  background: none;
+  border: none;
+  color: rgb(168, 11, 30);
+  font-weight: 800;
+  font-size: 1.5em;
+}
+
+.input-area .delete-all {
+  margin-left: 0.5em;
 }
 
 .tabs {
@@ -43,4 +68,11 @@ h1 {
   display: flex;
   justify-content: space-between;
   padding: 0.5em;
+}
+
+.task button {
+  background: none;
+  border: none;
+  color: rgb(168, 11, 30);
+  font-size: 1.2em;
 }

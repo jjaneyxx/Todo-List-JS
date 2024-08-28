@@ -20,8 +20,9 @@
     <div class="container">
       <h1>TODO LIST</h1>
       <section class="input-area">
-        <input />
-        <button>+</button>
+        <input placeholder="할일을 입력하세요" />
+        <button><i class="fa-solid fa-plus"></i></button>
+        <button class="delete-all"><i class="fa-solid fa-x"></i></button>
       </section>
 
       <section class="task-area">
@@ -36,13 +37,18 @@
         <div class="task">
           할일
           <div class="button-area">
-            <button>done</button>
-            <button>delete</button>
+            <button>
+              <i class="fa-solid fa-check button-task"></i>
+            </button>
+            <button>
+              <i class="fa-solid fa-trash button-task"></i>
+            </button>
           </div>
         </div>
       </section>
     </div>
 
+    <script src="https://kit.fontawesome.com/e9a57534d5.js" crossorigin="anonymous"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
