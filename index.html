@@ -20,8 +20,8 @@
     <div class="container">
       <h1>TODO LIST</h1>
       <section class="input-area">
-        <input placeholder="할일을 입력하세요" />
-        <button><i class="fa-solid fa-plus"></i></button>
+        <input type="task" placeholder="할일을 입력하세요" id="task-input" />
+        <button id="add-button"><i class="fa-solid fa-plus"></i></button>
         <button class="delete-all"><i class="fa-solid fa-x"></i></button>
       </section>
 
@@ -34,17 +34,7 @@
           <div>끝남</div>
         </div>
         <!-- 태스크 -->
-        <div class="task">
-          할일
-          <div class="button-area">
-            <button>
-              <i class="fa-solid fa-check button-task"></i>
-            </button>
-            <button>
-              <i class="fa-solid fa-trash button-task"></i>
-            </button>
-          </div>
-        </div>
+        <div id="task-board"></div>
       </section>
     </div>
 
