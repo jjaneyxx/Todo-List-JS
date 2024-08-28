@@ -39,7 +39,7 @@ h1 {
   font-size: 1.5em;
 }
 
-.input-area .delete-all {
+.input-area #delete-all {
   margin-left: 0.5em;
 }
 

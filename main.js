@@ -11,10 +11,14 @@ taskInput.addEventListener("keyup", (event) => {
 });
 
 function addTask() {
-  taskList.push(taskInput.value);
-  console.log(taskList);
-  render();
-  taskInput.value = "";
+  if (taskInput.value == "") {
+    alert("할 일을 입력하세요");
+  } else {
+    taskList.push(taskInput.value);
+    console.log(taskList);
+    render();
+    taskInput.value = "";
+  }
 }
 
 function render() {
