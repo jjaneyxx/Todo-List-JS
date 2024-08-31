@@ -40,7 +40,7 @@ function render() {
       <div class = "task-done">${taskList[i].taskContent}</div>
       <div class="button-area">
         <button onclick = "toggleComplete('${taskList[i].id}')">
-          <i class="fa-solid fa-check"></i>
+          <i class="fa-solid fa-arrow-rotate-right"></i>
         </button>
         <button onclick = "deleteTask('${taskList[i].id}')">
           <i class="fa-solid fa-trash"></i>
