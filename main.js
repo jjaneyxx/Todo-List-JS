@@ -32,11 +32,8 @@ function addTask() {
 function render() {
   let resultHTML = ``;
   for (let i = 0; i < taskList.length; i++) {
-    if (taskList[i].isDeleted == true) {
-      resultHTML += "";
-    } else {
-      if (taskList[i].isComplete == true) {
-        resultHTML += `<div class="task task-box-done">
+    if (taskList[i].isComplete == true) {
+      resultHTML += `<div class="task task-box-done">
       <div class = "task-done">${taskList[i].taskContent}</div>
       <div class="button-area">
         <button onclick = "toggleComplete('${taskList[i].id}')">
@@ -47,8 +44,8 @@ function render() {
         </button>
       </div>
     </div>`;
-      } else {
-        resultHTML += `<div class="task">
+    } else {
+      resultHTML += `<div class="task">
         <div>${taskList[i].taskContent}</div>
         <div class="button-area">
           <button onclick = "toggleComplete('${taskList[i].id}')">
@@ -59,7 +56,6 @@ function render() {
           </button>
         </div>
       </div>`;
-      }
     }
   }
   taskBoard.innerHTML = resultHTML;
@@ -80,7 +76,7 @@ function deleteTask(id) {
   console.log("삭제");
   for (let i = 0; i < taskList.length; i++) {
     if (taskList[i].id == id) {
-      taskList[i].isDeleted = true;
+      taskList.splice(i, 1);
       break;
     }
   }
