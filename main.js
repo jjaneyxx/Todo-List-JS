@@ -1,6 +1,7 @@
 let taskInput = document.getElementById("task-input");
 let addButton = document.getElementById("add-button");
 let taskList = []; // 입력된 할일을 담는 배열
+let taskBoard = document.getElementById("task-board");
 
 addButton.addEventListener("click", addTask);
 taskInput.addEventListener("focus", () => {
@@ -15,7 +16,6 @@ function addTask() {
     alert("할 일을 입력하세요");
   } else {
     taskList.push(taskInput.value);
-    console.log(taskList);
     render();
     taskInput.value = "";
   }
@@ -23,16 +23,18 @@ function addTask() {
 
 function render() {
   let resultHTML = ``;
-  resultHTML = `<div class="task">
-            <div>${taskList[taskList.length - 1]}</div>
-            <div class="button-area">
-              <button>
-                <i class="fa-solid fa-check"></i>
-              </button>
-              <button>
-                <i class="fa-solid fa-trash"></i>
-              </button>
-            </div>
-          </div>`;
-  document.getElementById("task-board").insertAdjacentHTML("beforeend", resultHTML);
+  for (let i = 0; i < taskList.length; i++) {
+    resultHTML += `<div class="task">
+    <div>${taskList[i]}</div>
+    <div class="button-area">
+      <button>
+        <i class="fa-solid fa-check"></i>
+      </button>
+      <button>
+        <i class="fa-solid fa-trash"></i>
+      </button>
+    </div>
+  </div>`;
+  }
+  taskBoard.innerHTML = resultHTML;
 }
