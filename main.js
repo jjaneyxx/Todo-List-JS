@@ -2,6 +2,9 @@ let taskInput = document.getElementById("task-input");
 let addButton = document.getElementById("add-button");
 let taskList = []; // 입력된 할일을 담는 배열
 let taskBoard = document.getElementById("task-board");
+let tabs = document.querySelectorAll(".tabs div");
+let mode = "all"; // 유저가 선택한 탭의 id
+let filterList = []; // 진행중인 아이템만 담는 새로운 배열
 
 addButton.addEventListener("click", addTask);
 taskInput.addEventListener("focus", () => {
@@ -9,6 +12,14 @@ taskInput.addEventListener("focus", () => {
 });
 taskInput.addEventListener("keyup", (event) => {
   if (event.key === "Enter") addTask();
+});
+
+tabs.forEach((tab, index) => {
+  if (index > 0) {
+    tab.addEventListener("click", function (event) {
+      filter(event);
+    });
+  }
 });
 
 function addTask() {
@@ -30,28 +41,37 @@ function addTask() {
 }
 
 function render() {
+  let list = [];
+  if (mode === "all") {
+    list = taskList;
+  } else if (mode === "ongoing") {
+    list = filterList;
+    console.log("진행중 탭");
+  }
+
   let resultHTML = ``;
-  for (let i = 0; i < taskList.length; i++) {
-    if (taskList[i].isComplete == true) {
+  for (let i = 0; i < list.length; i++) {
+    if (list[i].isComplete == true) {
       resultHTML += `<div class="task task-box-done">
-      <div class = "task-done">${taskList[i].taskContent}</div>
+      <div class = "task-done">${list[i].taskContent}</div>
       <div class="button-area">
-        <button onclick = "toggleComplete('${taskList[i].id}')">
+        <button onclick = "toggleComplete('${list[i].id}')">
           <i class="fa-solid fa-arrow-rotate-right"></i>
         </button>
-        <button onclick = "deleteTask('${taskList[i].id}')">
+        <button onclick = "deleteTask('${list[i].id}')">
           <i class="fa-solid fa-trash"></i>
         </button>
       </div>
     </div>`;
     } else {
+      console.log("else문실행");
       resultHTML += `<div class="task">
-        <div>${taskList[i].taskContent}</div>
+        <div>${list[i].taskContent}</div>
         <div class="button-area">
-          <button onclick = "toggleComplete('${taskList[i].id}')">
+          <button onclick = "toggleComplete('${list[i].id}')">
             <i class="fa-solid fa-check"></i>
           </button>
-          <button onclick = "deleteTask('${taskList[i].id}')">
+          <button onclick = "deleteTask('${list[i].id}')">
             <i class="fa-solid fa-trash"></i>
           </button>
         </div>
@@ -82,6 +102,28 @@ function deleteTask(id) {
   }
   console.log(taskList);
   render(); // 화면에 그리기 위해 render 함수 호출
+}
+
+// 모두, 진행중, 끝남 탭 필터링
+function filter(event) {
+  mode = event.target.id;
+  if (mode === "all") {
+    // 모두 탭 선택
+    render();
+  } else if (mode === "ongoing") {
+    // 진행중 탭 선택, isComplete  : false 인 아이템들
+    filterList = []; // 필터 리스트를 우선 초기화
+    for (let i = 0; i < taskList.length; i++) {
+      if (taskList[i].isComplete === false) {
+        filterList.push(taskList[i]); // 진행중인 아이템만 푸쉬
+      }
+    }
+    console.log("진행중", filterList);
+    render();
+  } else if (mode === "done") {
+    // 끝남 탭 선택
+    // isComplete  : true
+  }
 }
 
 // task 의 id 생성

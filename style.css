@@ -84,3 +84,7 @@ h1 {
 .task-box-done {
   background-color: grey;
 }
+
+.tabs div:not(#under-line) {
+  cursor: pointer;
+}
