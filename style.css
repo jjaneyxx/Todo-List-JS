@@ -82,9 +82,9 @@ h1 {
 }
 
 .task-box-done {
-  background-color: grey;
+  background-color: lightpink;
 }
 
 .tabs div:not(#under-line) {
   cursor: pointer;
-}
+}`
