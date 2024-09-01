@@ -35,7 +35,7 @@ function addTask() {
     };
     console.log(task);
     taskList.push(task);
-    render();
+    filter({ target: { id: mode } });
     taskInput.value = ""; // 입력창 비우기
   }
 }
@@ -87,7 +87,7 @@ function toggleComplete(id) {
       break; // for 문 종료
     }
   }
-  render(); // 화면에 그리기 위해 render 함수 호출
+  filter({ target: { id: mode } }); // 화면에 그리기 위해 render 함수 호출
 }
 
 function deleteTask(id) {
@@ -99,7 +99,7 @@ function deleteTask(id) {
     }
   }
   console.log(taskList);
-  render(); // 화면에 그리기 위해 render 함수 호출
+  filter({ target: { id: mode } }); // 화면에 그리기 위해 render 함수 호출
 }
 
 // 모두, 진행중, 끝남 탭 필터링
