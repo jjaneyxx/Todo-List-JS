@@ -44,9 +44,8 @@ function render() {
   let list = [];
   if (mode === "all") {
     list = taskList;
-  } else if (mode === "ongoing") {
+  } else if (mode === "ongoing" || mode === "done") {
     list = filterList;
-    console.log("진행중 탭");
   }
 
   let resultHTML = ``;
@@ -64,7 +63,6 @@ function render() {
       </div>
     </div>`;
     } else {
-      console.log("else문실행");
       resultHTML += `<div class="task">
         <div>${list[i].taskContent}</div>
         <div class="button-area">
@@ -111,18 +109,25 @@ function filter(event) {
     // 모두 탭 선택
     render();
   } else if (mode === "ongoing") {
-    // 진행중 탭 선택, isComplete  : false 인 아이템들
+    // 진행중 탭 선택
     filterList = []; // 필터 리스트를 우선 초기화
     for (let i = 0; i < taskList.length; i++) {
       if (taskList[i].isComplete === false) {
         filterList.push(taskList[i]); // 진행중인 아이템만 푸쉬
       }
     }
-    console.log("진행중", filterList);
+    console.log("진행중 탭", filterList);
     render();
   } else if (mode === "done") {
     // 끝남 탭 선택
-    // isComplete  : true
+    filterList = [];
+    for (let i = 0; i < taskList.length; i++) {
+      if (taskList[i].isComplete === true) {
+        filterList.push(taskList[i]);
+      }
+    }
+    console.log("끝남 탭", filterList);
+    render();
   }
 }
 
