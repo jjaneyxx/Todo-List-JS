@@ -5,6 +5,7 @@ let taskBoard = document.getElementById("task-board");
 let tabs = document.querySelectorAll(".tabs div");
 let mode = "all"; // 유저가 선택한 탭의 id
 let filterList = []; // 진행중인 아이템만 담는 새로운 배열
+let deleteAll = document.getElementById("delete-all");
 
 addButton.addEventListener("click", addTask);
 taskInput.addEventListener("focus", () => {
@@ -21,6 +22,7 @@ tabs.forEach((tab, index) => {
     });
   }
 });
+deleteAll.addEventListener("click", deleteAllTask);
 
 function addTask() {
   if (taskInput.value == "") {
@@ -33,7 +35,6 @@ function addTask() {
       isComplete: false,
       isDeleted: false,
     };
-    console.log(task);
     taskList.push(task);
     filter({ target: { id: mode } });
     taskInput.value = ""; // 입력창 비우기
@@ -91,14 +92,12 @@ function toggleComplete(id) {
 }
 
 function deleteTask(id) {
-  console.log("삭제");
   for (let i = 0; i < taskList.length; i++) {
     if (taskList[i].id == id) {
       taskList.splice(i, 1);
       break;
     }
   }
-  console.log(taskList);
   filter({ target: { id: mode } }); // 화면에 그리기 위해 render 함수 호출
 }
 
@@ -108,6 +107,7 @@ function filter(event) {
   if (mode === "all") {
     // 모두 탭 선택
     render();
+    console.log("ALL 탭");
   } else if (mode === "ongoing") {
     // 진행중 탭 선택
     filterList = []; // 필터 리스트를 우선 초기화
@@ -116,7 +116,7 @@ function filter(event) {
         filterList.push(taskList[i]); // 진행중인 아이템만 푸쉬
       }
     }
-    console.log("진행중 탭", filterList);
+    console.log("ON GOING 탭", filterList);
     render();
   } else if (mode === "done") {
     // 끝남 탭 선택
@@ -126,9 +126,16 @@ function filter(event) {
         filterList.push(taskList[i]);
       }
     }
-    console.log("끝남 탭", filterList);
+    console.log("DONE 탭", filterList);
+
     render();
   }
+}
+
+// 모든 태스크 삭제
+function deleteAllTask() {
+  taskList = [];
+  filter({ target: { id: mode } });
 }
 
 // task 의 id 생성
