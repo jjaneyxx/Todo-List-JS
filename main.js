@@ -6,6 +6,8 @@ let tabs = document.querySelectorAll(".tabs div");
 let mode = "all"; // 유저가 선택한 탭의 id
 let filterList = []; // 진행중인 아이템만 담는 새로운 배열
 let deleteAll = document.getElementById("delete-all");
+let underLine = document.getElementById("under-line");
+console.log(underLine);
 
 addButton.addEventListener("click", addTask);
 taskInput.addEventListener("focus", () => {
@@ -19,6 +21,7 @@ tabs.forEach((tab, index) => {
   if (index > 0) {
     tab.addEventListener("click", function (event) {
       filter(event);
+      underLineMover(event);
     });
   }
 });
@@ -141,4 +144,11 @@ function deleteAllTask() {
 // task 의 id 생성
 function generateRandomID() {
   return Math.random().toString(36).substr(2, 16);
+}
+
+function underLineMover(event) {
+  underLine.style.left = event.currentTarget.offsetLeft + "px";
+  underLine.style.width = event.currentTarget.offsetWidth + "px";
+  underLine.style.top = event.currentTarget.offsetTop + event.currentTarget.offsetHeight - 5 + "px";
+  console.log(underLine.style.top);
 }
