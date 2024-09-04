@@ -17,6 +17,7 @@ h1 {
   font-family: "Bungee Tint", sans-serif;
   font-weight: 400;
   font-style: normal;
+  cursor: pointer;
 }
 
 .input-area {
@@ -51,7 +52,7 @@ h1 {
 }
 
 #under-line {
-  background-color: rgb(168, 11, 30);
+  background-color: rgb(214, 55, 54);
   position: absolute;
   width: 50px;
   left: 0px;
@@ -80,6 +81,8 @@ h1 {
 
 .task-done {
   text-decoration: line-through;
+  text-decoration-color: rgb(168, 11, 30);
+  text-decoration-thickness: 2px;
 }
 
 .task-box-done {

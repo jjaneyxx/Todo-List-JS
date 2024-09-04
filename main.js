@@ -1,3 +1,5 @@
+let headLine = document.getElementById("head-line");
+let allTab = document.getElementById("all"); // ALL 탭의 DOM 요소
 let taskInput = document.getElementById("task-input");
 let addButton = document.getElementById("add-button");
 let taskList = []; // 입력된 할일을 담는 배열
@@ -7,8 +9,12 @@ let mode = "all"; // 유저가 선택한 탭의 id
 let filterList = []; // 진행중인 아이템만 담는 새로운 배열
 let deleteAll = document.getElementById("delete-all");
 let underLine = document.getElementById("under-line");
-console.log(underLine);
 
+headLine.addEventListener("click", () => {
+  mode = "all";
+  filter({ target: { id: mode } });
+  underLineMover({ currentTarget: allTab }); // ALL 탭의 DOM 요소를 직접 참조해 전달
+});
 addButton.addEventListener("click", addTask);
 taskInput.addEventListener("focus", () => {
   taskInput.value = "";
@@ -25,11 +31,12 @@ tabs.forEach((tab, index) => {
     });
   }
 });
+
 deleteAll.addEventListener("click", deleteAllTask);
 
 function addTask() {
   if (taskInput.value == "") {
-    alert("할 일을 입력하세요");
+    alert("할 일을 입력하세용");
   } else {
     // 입력한 내용과 완료여부를 체크하는 내용 포함
     let task = {
@@ -150,5 +157,4 @@ function underLineMover(event) {
   underLine.style.left = event.currentTarget.offsetLeft + "px";
   underLine.style.width = event.currentTarget.offsetWidth + "px";
   underLine.style.top = event.currentTarget.offsetTop + event.currentTarget.offsetHeight - 5 + "px";
-  console.log(underLine.style.top);
 }
